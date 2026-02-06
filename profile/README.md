@@ -84,6 +84,8 @@ Agent 和执行环境完全分离。危险操作丢给沙箱，日常任务走�
 </tr>
 </table>
 
+<p align="center"><i>不是 Agent 变了，是接的资源变了。</i></p>
+
 <br>
 
 ## 架构
