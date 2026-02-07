@@ -12,7 +12,7 @@
 
 ---
 
-**精简内核** · **资源可插拔** · **控制面与执行面分离**
+**Topics, Not Sessions** · **Canvas Memory** · **Hot-Plug Resources** · **Form Follows Resources**
 
 ---
 
@@ -22,7 +22,7 @@
 
 ## 理念
 
-大多数 AI Agent 把自己和机器绑死——LLM 包一层 tool calling，跑在你的电脑上，能把自己搞坏。
+大多数 AI Agent 把自己和机器绑死——跑在你的电脑上，能把自己搞坏；每次对话都是新的 session，聊完就忘；记忆是碎片化的摘要拼接，不是完整的画面。
 
 我们认为 Agent 应该是**独立的**。它有自己的记忆、时间感和判断力。不依赖任何特定机器，但接上电脑和浏览器时，就能操作真实世界。
 
@@ -30,25 +30,38 @@
 
 <table>
 <tr>
-<td width="33%" valign="top">
+<td width="50%" valign="top">
 
-### 精简内核
+### Topics, Not Sessions
+**无缝上下文，话题聚焦**
 
-LLM + 消息平台就能工作。记忆、定时任务、模型管理是内建能力。记忆受 [Sargent](https://en.wikipedia.org/wiki/John_Singer_Sargent) 肖像画法启发——焦点精确到毫厘，远景只留神韵。
-
-</td>
-<td width="33%" valign="top">
-
-### 资源可插拔
-
-电脑和浏览器是外部资源，随时接入、随时断开。可以同时连多台电脑和多个浏览器，Agent 自动路由任务。
+没有"新建对话"，没有上下文管理。所有话题天然携带完整上下文——只是在不同话题下，注意力焦点不同。像和真人聊天一样：换个话题继续聊，对方自然知道你在说什么。
 
 </td>
-<td width="33%" valign="top">
+<td width="50%" valign="top">
 
-### 控制面分离
+### Canvas Memory
+**画布记忆**
 
-Agent 和执行环境完全分离。危险操作丢给沙箱，日常任务走工作站，GPU 任务走云服务器。Agent 永远安全。
+受 [Sargent](https://en.wikipedia.org/wiki/John_Singer_Sargent) 肖像画法启发。焦点精确到毫厘，远景只留神韵。记忆跨越天、周、月、年，逐层压缩但本质不丢。召回时自动补全断档——始终是完整的画面，不是碎片的拼贴。
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### Hot-Plug Resources
+**热插拔资源**
+
+即装即用，一个程序，任何电脑或浏览器都能变成 Agent 的延伸。反向连接，无需端口转发。随时接入、随时断开，可以同时连多台，Agent 自动路由任务。
+
+</td>
+<td width="50%" valign="top">
+
+### Form Follows Resources
+**资源决定形态**
+
+Agent 和执行环境完全分离。接什么资源，就变成什么角色——接浏览器是数字分身，接服务器是运维中枢，接沙箱是隔离环境。Agent 核心不变，能力随资源而变。
 
 </td>
 </tr>
@@ -56,7 +69,7 @@ Agent 和执行环境完全分离。危险操作丢给沙箱，日常任务走�
 
 <br>
 
-## 同一套架构，不同的形态
+## Form Follows Resources
 
 <table>
 <tr>
@@ -116,7 +129,7 @@ Agent 和执行环境完全分离。危险操作丢给沙箱，日常任务走�
 
 ### [`agent`](https://github.com/epiral/agent) — 大脑
 
-持久存在的智能体。无缝记忆跨越天/周/月/年，智能模型切换，定时事件，Skills 进化。当前通过 Zulip 交互，更多平台即将到来。
+持久存在的智能体。无缝上下文跨越所有话题，画布记忆跨越天/周/月/年，智能模型切换，定时事件，Skills 进化。当前通过 Zulip 交互，更多平台即将到来。
 
 `TypeScript` `Node.js`
 
@@ -125,7 +138,7 @@ Agent 和执行环境完全分离。危险操作丢给沙箱，日常任务走�
 
 ### [`cli`](https://github.com/epiral/cli) — 接入
 
-一个二进制，几个参数，任何机器变成 Agent 的延伸。支持 Computer 和 Browser 两种资源。反向连接，无需端口转发。
+即装即用，任何电脑或浏览器变成 Agent 的延伸。支持 Computer 和 Browser 两种资源。反向连接，无需端口转发。
 
 `Go`
 
